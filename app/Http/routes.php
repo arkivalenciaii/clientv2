@@ -20,6 +20,11 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('valence/', [
+	'middleware' => 'auth',
+	'uses'	=> 'AdminController@index'
+]);
+
 Route::post('dashboard/user', [
 	'middleware' => 'auth',
 	'uses' => 'DashboardController@create',
@@ -38,6 +43,10 @@ Route::get('dashboard/user', [
 Route::get('tree/{id}', 'TreeController@index');
 
 Route::get('check/{id}', 'TreeController@checkexit');
+
+Route::get('json', function(){
+	return response(json_encode(\App\User::all()));
+});
 
 // Route::get('subjects/{code}', [
 //     'middleware' => 'auth',

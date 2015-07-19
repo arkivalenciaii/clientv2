@@ -24,6 +24,17 @@ class DashboardController extends Controller
     	]);
     }
 
+    public function admin()
+    {
+    	$user = \Auth::User();
+    	$slots = \App\Slot::all();
+
+    	return view('valence')->with([
+    		'user' => $user,
+    		'slots' => $slots,
+    	]);
+    }
+
     public function attachBank()
     {
     	$bank_account = \Input::get('bank_account');
