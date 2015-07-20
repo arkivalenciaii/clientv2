@@ -37,7 +37,7 @@
 		<!-- BOX -->
 		<div class="box border green">
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>Slots Table</h4>
+				<h4><i class="fa fa-table"></i>Slots Under Transaction #{{$t_num}}</h4>
 				<div class="tools hidden-xs">
 					<a href="#box-config" data-toggle="modal" class="config">
 						<i class="fa fa-cog"></i>
@@ -57,52 +57,51 @@
 				<table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>Rank</th>
 							<th>Slot Code</th>
-							<th class="hidden-xs">Transaction Number</th>
+							
 							<th>Owner</th>
 							<th class="hidden-xs">Status</th>
 						</tr>
 					</thead>
 					<tbody>
-					@foreach($slots as $slot)
+					@foreach($transaction as $result)
+					@foreach($result->slots as $slot)
 						<tr class="gradeX">
-							<td>{{$slot->id}}</td>
 							<td>
 								<a href="/slots/{{$slot->slot_code}}">{{$slot->slot_code}}</a>
 							</td>
-							<td class="hidden-xs">
-							@if($slot->transaction)
-								<a href="admin/transaction/{{$slot->transaction->transaction_number}}">{{$slot->transaction->transaction_number}}</a>
-							@else
-								<a href="#">-</a>
-							@endif
-							</td>
 							<td class="center">{{ $slot->user->first_name }}</td>
-							<td>
 							@foreach($slot->status as $status)
-								<span class="label label-{{ $status->status }} label-sm">{{ $status->status_message }}
-								</span>
+							<td><span class="label label-{{ $status->status }} label-sm">{{ $status->status_message }}</span></td>
 							@endforeach
-							</td>
-						</tr>	
-					@endforeach
-					</tbody>
-					<tfoot>
-						<tr>
-							<th>Rendering engine</th>
-							<th>Browser</th>
-							<th class="hidden-xs">Platform(s)</th>
-							<th>Engine version</th>
-							<th class="hidden-xs">CSS grade</th>
 						</tr>
-					</tfoot>
+						@endforeach
+					
+					</tbody>
 				</table>
+				@if($result->verified == 0)
+				<form class="form-horizontal" method="POST" action="{{ url('/admin/transaction')}}">
+					
+					<div class="form-group">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			   			<label class="col-md-4 control-label">
+			   				Transaction Number
+			   			</label> 
+			   			<div class="col-md-8">
+			   				<input type="text" name="t_num" class="form-control" value="{{$t_num}}">
+			   			</div>
+					</div>
+					<div class="form-actions clearfix">
+		  				<input type="submit" value="Verify Transaction" class="btn btn-primary pull-right">
+		  			</div>
+				</form>
+				@endif
+				@endforeach
 			</div>
 		</div>
 		<!-- /BOX -->
 	</div>
-						</div>
+</div>
 </div>
 </div>
 </section>

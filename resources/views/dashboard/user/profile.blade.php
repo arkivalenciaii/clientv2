@@ -70,9 +70,7 @@
    <li><a href="#pro_buy" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile"> Queue Slots</span></a></li>
    @endif
    <li><a href="#pro_bank" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile"> Bank Account</span></a></li>
-   
-   
-   <li><a href="#" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile"> <strike>Edit Account</strike></span></a></li>
+   {{-- <li><a href="#" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile"> <strike>Edit Account</strike></span></a></li> --}}
    <li class="active"><a href="#pro_overview" data-toggle="tab"><i class="fa fa-dot-circle-o"></i> <span class="hidden-inline-mobile">Overview</span></a></li>
 </ul>
 <div class="tab-content">
@@ -288,63 +286,4 @@
    
    <!-- EDIT ACCOUNT -->
    @include('dashboard.user.tabs')
-</div>
-</div>
-<!-- /USER PROFILE -->
-</div>
-</div>
-</div>
-</div>
-						
-<div class="footer-tools">
-							<span class="go-top">
-								<i class="fa fa-chevron-up"></i> Top
-							</span>
-						</div>
-					</div><!-- /CONTENT-->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--/PAGE -->
-	<!-- JAVASCRIPTS -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- JQUERY -->
-	<script src="/js/jquery/jquery-2.0.3.min.js"></script>
-	<!-- JQUERY UI-->
-	<script src="/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
-	<!-- BOOTSTRAP -->
-	<script src="/bootstrap-dist/js/bootstrap.min.js"></script>
-	
-		
-	<!-- DATE RANGE PICKER -->
-	<script src="/js/bootstrap-daterangepicker/moment.min.js"></script>
-	
-	<script src="/js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
-	<!-- SLIMSCROLL -->
-	<script type="text/javascript" src="/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
-	<!-- SLIMSCROLL -->
-	<script type="text/javascript" src="/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script><script type="text/javascript" src="/js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
-	<!-- BLOCK UI -->
-	<script type="text/javascript" src="/js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
-	<!-- EASY PIE CHART -->
-	<script src="/js/jquery-easing/jquery.easing.min.js"></script>
-	<script type="text/javascript" src="/js/easypiechart/jquery.easypiechart.min.js"></script>
-	<!-- SPARKLINES -->
-	<script type="text/javascript" src="/js/sparklines/jquery.sparkline.min.js"></script>
-	<!-- UNIFORM -->
-	<script type="text/javascript" src="/js/uniform/jquery.uniform.min.js"></script>
-	<!-- COOKIE -->
-	<script type="text/javascript" src="/js/jQuery-Cookie/jquery.cookie.min.js"></script>
-	<!-- CUSTOM SCRIPT -->
-	<script src="/js/script.js"></script>
-	<script>
-		jQuery(document).ready(function() {		
-			App.setPage("user_profile");  //Set current page
-			App.init(); //Initialise plugins and elements
-		});
-	</script>
-	<!-- /JAVASCRIPTS -->
-</body>
-</html>
 @endsection

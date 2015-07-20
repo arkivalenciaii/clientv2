@@ -36,6 +36,18 @@ class Slot extends Model
     	}
     }
 
+    public function verifySlot($slot)
+    {
+    	$status = \App\Status::find(1);
+
+    	foreach($slot->status as $stat)
+    	{
+    		$slot->status()->detach();
+    	}
+    	$status->slots()->attach($this);
+    	$this->updated_at = \Carbon\Carbon::now();	
+    }
+
     public function transaction()
     {
     	return $this->belongsTo('App\Transaction', 'transaction_id');

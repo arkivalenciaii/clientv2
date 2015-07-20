@@ -1,5 +1,5 @@
 <div class="tab-pane fade" id="pro_edit">
-	  <form class="form-horizontal" action="#">
+	<form class="form-horizontal" action="#">
 		<div class="row">
 			 <div class="col-md-6">
 				<div class="box border green">
@@ -101,10 +101,11 @@
 					  	</div>
 					</div>
 				</div>
-			 </div>
-		 </div>
-	  {{-- </form> --}}
-	  <div class="form-actions clearfix"> <input type="submit" value="Buy Slots" class="btn btn-primary pull-right"> </form></div>
+			</div>
+	  		<div class="form-actions clearfix">
+	  			<input type="submit" value="Buy Slots" class="btn btn-primary pull-right">
+	  		</div>
+	  	</form>
    	</div>
 
    	<div class="tab-pane fade" id="pro_bank">
@@ -124,8 +125,8 @@
 			   				<td class="hidden-xs"><a href="#">{{$user->bank->account_number}}</a></td>
 			   				<td><span class="label label-warning label-sm">UNVERIFIED</span></td>
 						</tr>
-		 			<tbody>
-  				</table>
+		 			</tbody>
+  				</table></div>
 			</div>
 		@else
 			<form class="form-horizontal" method="POST" action="{{ url('/dashboard/user/bank')}}">
@@ -167,8 +168,8 @@
 					</div>
 				</div>
 		  		<div class="form-actions clearfix">
-		  		<input type="submit" value="Link Account" class="btn btn-primary pull-right">
+		  			<input type="submit" value="Link Account" class="btn btn-primary pull-right">
+		  		</div>
 		  	</form>
-		  	</div>
-			@endif
-   		</div>
+		@endif
+	</div>

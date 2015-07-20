@@ -48,6 +48,23 @@ Route::get('json', function(){
 	return response(json_encode(\App\User::all()));
 });
 
+Route::post('admin/transaction', [
+	'middleware' => 'auth',
+	'uses' => 'TransactionController@verify',
+]);
+
+Route::get('admin/transaction/{id}', [
+	'middleware' => 'auth',
+	'uses' => 'AdminController@transaction',
+]);
+
+Route::get('admin/rank/', [
+	'middleware' => 'auth',
+	'uses' => 'AdminController@ranking',
+]);
+
+
+
 // Route::get('subjects/{code}', [
 //     'middleware' => 'auth',
 //     'uses' => 'SubjectController@index',
