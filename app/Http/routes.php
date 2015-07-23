@@ -72,6 +72,16 @@ Route::get('admin/exits', [
 	'uses' => 'RankController@index',
 ]);
 
+Route::get('admin/client/transaction/{id}/', [
+	'middleware' => 'auth',
+	'uses' => 'TransactionController@newTransaction',
+]);
+
+Route::post('admin/client/transaction/', [
+	'middleware' => 'auth',
+	'uses' => 'TransactionController@createTransaction',
+]);
+
 
 
 // Route::get('subjects/{code}', [

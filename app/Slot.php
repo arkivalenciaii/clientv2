@@ -20,6 +20,18 @@ class Slot extends Model
     	return $this->belongsToMany('App\Status');
     }
 
+    public function pending()
+    {
+    	if($this->status->status_id = 2)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
+
     public function tree()
     {
     	return $this->belongsTo('App\Tree');

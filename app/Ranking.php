@@ -13,4 +13,5 @@ class Ranking extends Model
     {
     	return $this->belongsTo('App\User');
     }
+    
 }

@@ -209,6 +209,7 @@ class DashboardController extends Controller
     	
 
     	$user = \Auth::User();
+    	$ranks = 0;
     	
     	$slots = $user->slots()->get();
     	return view('dashboard.user.profile')->with([
@@ -216,6 +217,7 @@ class DashboardController extends Controller
     		'num_slots' => $data['num_slots'], 
     		'limit' => $limit,
     		'user' => $user,
+    		'ranks' => $ranks,
     	]);
     }
 

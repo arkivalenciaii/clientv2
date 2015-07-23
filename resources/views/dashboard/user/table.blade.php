@@ -23,7 +23,7 @@
   </table>
 </div>
 
-@if($ranks->count() > 0)
+@if($ranks)
 	<div class="tab-pane active" id="ranked">
 	  <table class="table table-striped table-bordered table-hover">
 		 <thead>

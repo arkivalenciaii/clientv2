@@ -37,7 +37,7 @@
 		<!-- BOX -->
 		<div class="box border green">
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>Slots Table</h4>
+				<h4><i class="fa fa-table"></i>Pending slots under {{$user->first_name}} {{$user->last_name}}</h4>
 				<div class="tools hidden-xs">
 					<a href="#box-config" data-toggle="modal" class="config">
 						<i class="fa fa-cog"></i>
@@ -57,52 +57,58 @@
 				<table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>Rank</th>
 							<th>Slot Code</th>
-							<th class="hidden-xs">Transaction Number</th>
-							<th>Owner</th>
 							<th class="hidden-xs">Status</th>
 						</tr>
 					</thead>
 					<tbody>
 					@foreach($slots as $slot)
+					@foreach($slot->status as $status)
+						@if($status->status_message == "PENDING")
 						<tr class="gradeX">
-							<td>{{$slot->id}}</td>
 							<td>
 								<a href="/slots/{{$slot->slot_code}}">{{$slot->slot_code}}</a>
 							</td>
-							<td class="hidden-xs">
-							@if($slot->transaction)
-								<a href="admin/transaction/{{$slot->transaction->transaction_number}}">{{$slot->transaction->transaction_number}}</a>
-							@else
-								<a href="admin/client/transaction/{{$slot->user->email}}">Create Transaction</a>
-							@endif
-							</td>
-							<td class="center">{{ $slot->user->first_name }}</td>
-							<td>
-							@foreach($slot->status as $status)
-								<span class="label label-{{ $status->status }} label-sm">{{ $status->status_message }}
-								</span>
-							@endforeach
-							</td>
-						</tr>	
+							
+							
+							<td><span class="label label-{{ $status->status }} label-sm">{{ $status->status_message }}</span></td>
+							
+						</tr>
+						@endif
+					@endforeach
 					@endforeach
 					</tbody>
-					<tfoot>
-						<tr>
-							<th>Rendering engine</th>
-							<th>Browser</th>
-							<th class="hidden-xs">Platform(s)</th>
-							<th>Engine version</th>
-							<th class="hidden-xs">CSS grade</th>
-						</tr>
-					</tfoot>
 				</table>
+				
+				<form class="form-horizontal" method="POST" action="{{ url('admin/client/transaction/')}}">
+					
+					<div class="form-group">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<input type="hidden" name="email" value="{{$user->email}}">
+			   			<label class="col-md-4 control-label">
+			   				Transaction Number
+			   			</label> 
+			   			<div class="col-md-8">
+			   				<input type="text" name="transaction_number" class="form-control" value="{{old('t_num')}}">
+			   			</div>
+			   			<label class="col-md-4 control-label">
+			   				Amount
+			   			</label> 
+			   			<div class="col-md-4">
+			   				<input type="text" name="amount" class="form-control">
+			   			</div>
+					</div>
+					<div class="form-actions clearfix">
+		  				<input type="submit" value="Link Transaction" class="btn btn-primary pull-right">
+		  			</div>
+				</form>
+				
+				
 			</div>
 		</div>
 		<!-- /BOX -->
 	</div>
-						</div>
+</div>
 </div>
 </div>
 </section>
