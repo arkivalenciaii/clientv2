@@ -19,7 +19,7 @@ class CreateRankingsTable extends Migration
             $table->integer('tree_id')->unsigned();
             $table->string('slot_code');
             $table->integer('slot_rank');
-            $table->integer('exit');
+            $table->integer('slot_exit');
             $table->timestamps();
         });
     }

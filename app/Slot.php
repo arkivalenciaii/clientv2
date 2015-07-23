@@ -52,4 +52,33 @@ class Slot extends Model
     {
     	return $this->belongsTo('App\Transaction', 'transaction_id');
     }
+
+    public function rank($slot)
+    {
+    	if(\App\Ranking::where('slot_code', '=' ,$slot->slot_code)->exists() == false)
+    	{
+			$rank = new \App\Ranking;
+			$rank->slot_code = $slot->slot_code;
+			$rank->user_id = $slot->user_id;
+			$rank->save();
+			$rank->slot_rank = $rank->id;
+			$rank->slot_exit = 0;
+			$rank->save();
+
+			$tv1 = $rank->id;
+		    $tv2 = $rank->id * 2;
+		    $tv3 = $tv2 * 2;
+			$tree = new \App\Tree;
+			$tree->down1 = $tv2;
+			$tree->down2 = $tv2 + 1;
+			$tree->down3 = $tv3;
+			$tree->down4 = $tv3 + 1;
+			$tree->down5 = $tv3 + 2;
+			$tree->down6 = $tv3 + 3;
+			$tree->save();
+
+			$rank->tree_id = $tree->id;
+			$rank->save();
+		}
+    }
 }

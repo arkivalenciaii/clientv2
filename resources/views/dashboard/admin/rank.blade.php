@@ -1,4 +1,4 @@
-@extends('dashboard.app')
+@extends('dashboard.admin.app')
 
 @section('content')
 
@@ -37,7 +37,7 @@
 		<!-- BOX -->
 		<div class="box border green">
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>Number of slots - {{$slots->count()}}</h4>
+				<h4><i class="fa fa-table"></i>Number of slots - {{$ranks->count()}}</h4>
 				<div class="tools hidden-xs">
 					<a href="#box-config" data-toggle="modal" class="config">
 						<i class="fa fa-cog"></i>
@@ -60,26 +60,23 @@
 							<th>Rank</th>
 							<th>Slot Code</th>
 							<th>Owner</th>
-							<th class="hidden-xs">Status</th>
+							<th class="hidden-xs">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 					
-					@foreach($slots as $slot)
-						@foreach($slot->status as $status)
-							@if($status->id == 1)
-								<tr class="gradeX">
-									<td>-</td>
-									<td>
-										<a href="/slots/{{$slot->slot_code}}">{{$slot->slot_code}}</a>
-									</td>
-									<td class="center">{{ $slot->user->first_name }}</td>
-									<td><span class="label label-{{ $status->status }} label-sm">{{ $status->status_message }}</span>
-									</td>	
-								</tr>
-							@endif
-							
-						@endforeach
+					@foreach($ranks as $rank)
+						@if($rank->slot_exit == 1)
+							<tr class="gradeX">
+								<td>{{$rank->slot_rank}}</td>
+								<td>
+									<a href="ranking/slots/{{$rank->slot_code}}">{{$rank->slot_code}}</a>
+								</td>
+								<td class="center">{{ $rank->user->first_name }}</td>
+								<td><span class="label label-success label-sm"><a href="#">Pay</a></span>
+								</td>	
+							</tr>
+						@endif
 					@endforeach	
 					</tbody>
 				</table>	

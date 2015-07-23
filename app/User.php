@@ -44,6 +44,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Slot');
     }
 
+    public function rankings()
+    {
+        return $this->hasMany('App\Ranking');
+    }
+
     public function limit()
     {
         if($this->slots()->count() >= 20)

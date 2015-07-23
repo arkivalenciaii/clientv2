@@ -21,10 +21,12 @@ class TransactionController extends Controller
     		foreach($slots as $slot)
     		{
     			$slot->verifySlot($slot);
+    			$slot->rank($slot);
     		}
     	}
 
-
     	return redirect('valence');
     }
+
+
 }

@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect('dashboard/user');
 });
 
+Route::get('home', function () {
+    return redirect('dashboard/user');
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -61,6 +65,11 @@ Route::get('admin/transaction/{id}', [
 Route::get('admin/rank/', [
 	'middleware' => 'auth',
 	'uses' => 'AdminController@ranking',
+]);
+
+Route::get('admin/exits', [
+	'middleware' => 'auth',
+	'uses' => 'RankController@index',
 ]);
 
 

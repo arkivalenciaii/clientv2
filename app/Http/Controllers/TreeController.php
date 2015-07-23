@@ -17,13 +17,12 @@ class TreeController extends Controller
     public function index($id)
     {
         $slot = \App\Slot::find($id);
-        $tree = $slot->tree;
-        $tv1 = $slot->id;
-        $tv2 = $slot->id * 2;
+        // $tree = $slot->tree;
+        $tv1 = $id;
+        $tv2 = $id * 2;
         $tv3 = $tv2 * 2;
         return view('tree')->with([
-            'tree' => $tree, 
-            'slot' => $slot,
+            
             'tv1' => $tv1,
             'tv2' => $tv2,
             'tv3' => $tv3,

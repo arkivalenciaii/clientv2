@@ -15,6 +15,8 @@ class Tree extends Model
     	return $this->belongsTo('App\Slot');
 	}
 
+	
+
 	public function slots()
 	{
 		for($i = 0; $i < 6; $i++)

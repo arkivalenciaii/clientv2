@@ -178,6 +178,7 @@
 				<div class="box-body">
 					<div class="tabbable">
 						<ul class="nav nav-tabs">
+							<li class="active"><a href="#ranked" data-toggle="tab"><i class="fa fa-signal"></i> <span class="hidden-inline-mobile">Ranked Slots</span></a></li>
 						   <li class="active"><a href="#sales" data-toggle="tab"><i class="fa fa-signal"></i> <span class="hidden-inline-mobile">Queued Slots</span></a></li>
 						   <li><a href="#" data-toggle="tab"><i class="fa fa-rss"></i> <span class="hidden-inline-mobile"><strike>Account Activity</strike></span></a></li>
 						</ul>

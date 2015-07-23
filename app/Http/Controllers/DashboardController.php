@@ -13,6 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
     	$user = \Auth::User();
+    	$ranks = $user->rankings()->get();
     	$name = $user->name;
     	$slots = $user->slots()->get();
     	$limit = $user->limit;
@@ -21,8 +22,11 @@ class DashboardController extends Controller
     		'user' => $user,
     		'slots' => $slots, 
     		'limit' => $limit,
+    		'ranks' => $ranks,
     	]);
     }
+
+
 
     public function admin()
     {

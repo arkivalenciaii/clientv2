@@ -37,11 +37,11 @@ class AdminController extends Controller
 
     public function ranking()
     {
-    	$slots = \App\Slot::all();
+    	$ranks = \App\Ranking::all();
     	
     	return view('dashboard.admin.rank')->with([
     		'user' => \Auth::User(),
-    		'slots' => $slots,
+    		'ranks' => $ranks,
     	]);
     }
 }
